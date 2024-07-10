@@ -1,0 +1,10 @@
+.header-design {
+    height: 10vh;
+    width: 100vw;
+
+    background-color: seagreen;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
