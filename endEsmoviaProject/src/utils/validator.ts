@@ -1,4 +1,4 @@
-function checkE(type, value) {
+function checkE(type:string, value:string) {
     switch (type) {
         case 'name':
             if (value.length < 5) {

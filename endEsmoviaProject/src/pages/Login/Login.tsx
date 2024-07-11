@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import "./Login.css"
 import {myContext} from "../../app/context"
-import checkE from "../../utils/errors";
+import checkE from "../../utils/validator";
 import { LoginMe } from "../../services/api-calls";
 import CInput from "../../common/CInput/CInput";
 import {Credencials, CredencialsErrors, CredencialsResult} from "../../interfaces";

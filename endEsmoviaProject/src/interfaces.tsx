@@ -12,7 +12,7 @@ export interface Joke {
 }
 
 export interface CredencialsResult {
-    emial: string,
+    email: string,
     firstName: string,
     gender: string,
     id: number,
@@ -37,4 +37,8 @@ export interface CInputProps {
     design: string,
     emitFunction: (e: React.ChangeEvent<HTMLInputElement>)=>void,
     errorCheck: (e: React.FocusEvent<HTMLInputElement>) =>void
+}
+export interface SurferProps {
+    path: string,
+    destiny: string
 }
