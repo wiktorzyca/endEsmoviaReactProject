@@ -4,25 +4,24 @@ import {myContext} from "../../app/context"
 import checkE from "../../utils/errors";
 import { LoginMe } from "../../services/api-calls";
 import CInput from "../../common/CInput/CInput";
+import {Credencials, CredencialsErrors, CredencialsResult} from "../../interfaces";
 const Login = () => {
     const {state, SetAuth} = useContext(myContext)
 
-    const [credentials, setCredentials] = useState({
+    const [credentials, setCredentials] = useState<Credencials>({
         name: "",
         password: "",
     });
 
-    const [credentialsErrors, setCredentialsErrors] = useState({
+    const [credentialsErrors, setCredentialsErrors] = useState<CredencialsErrors>({
         nameError: "",
         passwordError: "",
     });
 
     const inputHandler = (e) => {
-        //Binding process
-        setCredentials((prevState) => ({
+        setCredentials((prevState: Credencials) => ({
             ...prevState,
             [e.target.name]: e.target.value,
-            //email : maciej@gmail.com
         }));
     };
 
@@ -31,18 +30,18 @@ const Login = () => {
 
         error = checkE(e.target.name, e.target.value);
 
-        setCredentialsErrors((prevState) => ({
+        setCredentialsErrors((prevState: CredencialsErrors) => ({
             ...prevState,
             [e.target.name + "Error"]: error,
         }));
     };
 
     const loginFunction = async () => {
-        console.log("lol")
-
         LoginMe(credentials)
-            .then(res => {
+            .then((res :CredencialsResult) => {
                 SetAuth("token", res.token)
+                // SetAuth("name", res.username)
+
             })
             .catch(error => console.log(error))
     };

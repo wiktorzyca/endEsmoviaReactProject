@@ -1,7 +1,8 @@
 
 import "./CInput.css"
+import {CInputProps} from "../../interfaces";
 
-function CInput ({type, name, placeholder, design, emitFunction, errorCheck}) {
+function CInput ({type, name, placeholder, design, emitFunction, errorCheck} : CInputProps) {
 
     return(
         <input 
