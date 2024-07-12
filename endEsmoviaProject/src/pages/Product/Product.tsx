@@ -23,17 +23,21 @@ const Product = () => {
 
     return(
         <div className="detail-design">
-            {
-                state.global.favourite.find(r=> r.id== state.global.recipe.id) !==undefined?
-                    <button onClick={()=>deleteFromFavourite()}>delete from favourite</button>
-                    : <button onClick={()=>addToFavourite()}>add to favourite</button>
-            }
 
-            <img src={state.global.recipe.image}/>
-            <h1>{state.global.recipe.name}</h1>
-            <p>time: {state.global.recipe.cookTimeMinutes}</p>
-            <p>calories per serving: {state.global.recipe.caloriesPerServing}</p>
-            <button onClick={()=>navigate("/")} name="back">back</button>
+            <img src={state.global.recipe.image} className="image"/>
+            <div>
+                <h1>{state.global.recipe.name}</h1>
+                <p>time: {state.global.recipe.cookTimeMinutes}</p>
+                <p>calories per serving: {state.global.recipe.caloriesPerServing}</p>
+                <button onClick={()=>navigate("/")} name="back">back</button>
+                {
+                    state.global.token !== "" ?
+                        (state.global.favourite.find(r=> r.id== state.global.recipe.id) !==undefined?
+                            <button onClick={()=>deleteFromFavourite()}>delete from favourite</button>
+                            : <button onClick={()=>addToFavourite()}>add to favourite</button>) :null
+                }
+            </div>
+
         </div>
     )
 };

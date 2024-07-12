@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { myContext } from "./context";
-
+import "../interfaces"
+import "../interfaces"
 export const MyProvider = ({ children }) => {
   const [state, setState] = useState({
     global: {

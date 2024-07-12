@@ -26,4 +26,12 @@ export async function bringRecipies() : Promise<RecipesResponce>{
 
   return await rawData.json();
 }
+export async function searchRecipeCriteria(criteria) {
+  const rawData : Response= await fetch(
+      `${root}recipes/search?q=${criteria}`
+  );
+  let r = await rawData.json();
+  console.log(r)
+  return r;
+}
 export default LoginMe

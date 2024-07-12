@@ -7,7 +7,7 @@ import "./Home.css"
 import {useNavigate} from "react-router-dom";
 import {Recipe} from "../../interfaces";
 // import {myContext} from "../../app/context";
-import {bringRecipies} from "../../services/api-calls";
+import {bringRecipies, searchRecipeCriteria} from "../../services/api-calls";
 import Surfer from "../../common/Surfer/Surfer";
 import Product from "../Product/Product";
 import {myContext} from "../../app/context";
@@ -18,16 +18,39 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (repies.length === 0) {
+        if (repies?.length === 0) {
             getRecipes();
         }
 
         console.log(repies);
     }, [repies]);
 
+    useEffect(() => {
+        //The trick here consists in the fact that we are following the state with the useEffect,
+        //so every time we change the state we alter the movies data hook, not the state hook.
+
+        if (state.global.search !== "") {
+            const bringSearchedRecipes = async () => {
+                searchRecipeCriteria(state.global.search)
+                    .then((res) => {
+                        setRecipes(res.recipes);
+                    })
+                    .catch((error) => console.log(error));
+            };
+            const bring = setTimeout(() => {
+                bringSearchedRecipes();
+            }, 275);
+
+            return () => clearTimeout(bring);
+        } else if (state.global.search === "") {
+            getRecipes();
+        }
+    }, [state]);
+
     const getRecipes = async () => {
         bringRecipies()
             .then((res) => {
+                console.log(res, "resss")
                 setRecipes(res.recipes);
             })
             .catch((error) => console.log(error));
@@ -37,8 +60,9 @@ const Home = () => {
         SetAuth("recipe", movie);
         navigate("/recipedetail");
     };
+
+
     return (
-        // <div className="home-design">
         <Carousel
             className="home-design"
             withIndicators
@@ -50,9 +74,9 @@ const Home = () => {
             slidesToScroll={4}>
 
             {
-                repies.map(r => {
+                repies?.map(r => {
                     return (
-                        <div onClick={()=>selectRecipe(r)} key={r.id}>
+                        <div onClick={() => selectRecipe(r)} key={r.id}>
                             <Carousel.Slide key={r.id}>
                                 <Card shadow="sm" padding="lg" radius="md" withBorder>
                                     <Card.Section>
@@ -68,18 +92,15 @@ const Home = () => {
                                         <Badge color="pink">difficulty: {r.difficulty}</Badge>
                                     </Group>
 
-                                    {/*<Rating defaultValue={r.rating} size="xl" count={5} color="orange"/>*/}
-
-
                                     <Surfer path={"/product"} destiny={Product}></Surfer>
                                 </Card>
                             </Carousel.Slide>
                         </div>
-                        )
+                    )
                 })
             }
         </Carousel>
-        // </div>
+
 
     );
 };

@@ -1,0 +1,9 @@
+.favourite-design{
+    height: 82vh;
+    width: 100vw;
+
+    background-color: lightskyblue;
+    color: red;
+    padding-top: 200px;
+    box-sizing: border-box;
+}

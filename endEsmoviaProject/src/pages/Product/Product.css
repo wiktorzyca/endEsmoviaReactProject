@@ -7,6 +7,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    color:green;
+}
+.image{
+    width: 40vw;
 }

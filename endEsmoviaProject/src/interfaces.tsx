@@ -1,3 +1,5 @@
+import {s} from "vite/dist/node/types.d-aGj9QkWt";
+
 export interface Answer {
     message: string,
     success: boolean,
@@ -46,7 +48,8 @@ export interface SurferProps {
     path: string,
     destiny: string
 }
-export interface Recipe{
+
+export interface Recipe {
     id: number,
     name: string,
     ingredients: string[],
@@ -59,14 +62,28 @@ export interface Recipe{
     caloriesPerServing: number,
     tags: string[],
     userId: number,
-    image : string,
+    image: string,
     rating: number,
-    reviewCount:number,
+    reviewCount: number,
     mealType: string[]
 }
+
 export interface RecipesResponce {
     recipes: Recipe[],
     total: number,
     skip: number,
     limit: number
+}
+
+export interface StateApp {
+    global: StateGlobal
+}
+
+export interface StateGlobal {
+    token: string,
+    name: string,
+    search: s,
+    data: Recipe[],
+    recipe: Recipe,
+    favourite: Recipe[]
 }

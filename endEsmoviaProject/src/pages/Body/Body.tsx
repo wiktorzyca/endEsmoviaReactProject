@@ -6,6 +6,7 @@ import { myContext } from "../../app/context";
 import { useContext } from "react";
 import Register from "../Register/Register";
 import Product from "../Product/Product";
+import Favourite from "../Favourite/Favourite";
 
 function Body() {
     const { state } = useContext(myContext);
@@ -23,11 +24,9 @@ function Body() {
                     : null
 
                 }
-
-                {/* Protected Routes */}
-                {/*{state.global.token !== "" ? (*/}
-                {/*    <Route path="/profile" element={<Profile />} />*/}
-                {/*) : null}*/}
+                {state.global.token !== "" ? (
+                    <Route path="/favourite" element={<Favourite />} />
+                ) : null}
             </Routes>
         </>
     );
