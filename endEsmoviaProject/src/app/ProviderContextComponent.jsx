@@ -7,7 +7,9 @@ export const MyProvider = ({ children }) => {
       token: "",
       name: "",
       search: "",
-      data: {}
+      data: {},
+      recipe: {},
+      favourite: []
     },
   });
 

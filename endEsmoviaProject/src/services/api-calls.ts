@@ -1,9 +1,8 @@
-import {Credencials, CredencialsResult} from "../interfaces";
+import {Credencials, CredencialsResult, RecipesResponce} from "../interfaces";
+import "../interfaces"
 
 const root = "https://dummyjson.com/";
-const root2 = "https://api.themoviedb.org/3/";
-const movie_api_key = "210d6a5dd3f16419ce349c9f1b200d6d";
-import "../interfaces"
+
 export async function LoginMe(credentials:Credencials) : Promise<CredencialsResult> {
   let rawData : Response = await fetch(`${root}auth/login`, {
     method: "POST",
@@ -11,12 +10,20 @@ export async function LoginMe(credentials:Credencials) : Promise<CredencialsResu
     body: JSON.stringify({
       username: credentials.name,
       password: credentials.password,
-      expiresInMins: 30, // optional, defaults to 60
+      expiresInMins: 30,
     }),
   });
 
   let data : CredencialsResult= await rawData.json();
   console.log(data)
   return data;
+}
+
+export async function bringRecipies() : Promise<RecipesResponce>{
+  const rawData : Response= await fetch(
+      `${root}recipes`
+  );
+
+  return await rawData.json();
 }
 export default LoginMe

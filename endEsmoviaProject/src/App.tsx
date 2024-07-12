@@ -1,10 +1,8 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import '@mantine/carousel/styles.css';
 import Header from "./common/Header/Header";
 import Body from "./pages/Body/Body";
 import Footer from "./common/Footer/Footer";
+import './App.css'
 
 function App() {
 

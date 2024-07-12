@@ -5,9 +5,10 @@ import Login from "../Login/Login";
 import { myContext } from "../../app/context";
 import { useContext } from "react";
 import Register from "../Register/Register";
+import Product from "../Product/Product";
 
 function Body() {
-    // const { state } = useContext(myContext);
+    const { state } = useContext(myContext);
     return (
         <>
             <Routes>
@@ -15,7 +16,13 @@ function Body() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                {state.global?.recipe?.id !== ""
 
+                    ? (<Route path="/recipedetail" element={<Product />} />)
+
+                    : null
+
+                }
 
                 {/* Protected Routes */}
                 {/*{state.global.token !== "" ? (*/}
