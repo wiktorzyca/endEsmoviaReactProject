@@ -1,6 +1,6 @@
 .login-design {
-
-     height: 82vh;
+    color: black;
+    height: 82vh;
     width: 100vw;
 
     background-color: beige;
@@ -9,8 +9,10 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
 }
-.login-button-design{
+
+.login-button-design {
     color: green;
 }

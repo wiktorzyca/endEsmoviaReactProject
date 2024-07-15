@@ -68,6 +68,7 @@ const Login = () => {
                 emitFunction={inputHandler}
                 errorCheck={errorCheck}
             />
+
             {credentialsErrors.passwordError}
             {credentials.name !== "" &&
             credentials.password !== "" &&
